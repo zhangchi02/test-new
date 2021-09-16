@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<settings xmlns="http://maven.apache.org/SETTINGS/1.0.0"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.0.0 http://maven.apache.org/xsd/settings-1.0.0.xsd">
+		  
+  <!--<localRepository>D:/test/Repository</localRepository>-->
+  
+  <servers>
+    <server>
+		<id>huaweicloudsdk</id>
+		<username>anonymous</username>
+		<password>devcloud</password>
+	</server>
+  </servers>
+  
+  <mirrors>
+	<mirror>
+      <id>aliyun</id>
+	    <mirrorOf>*</mirrorOf>
+      <name>Mirror of Ali.</name>
+      <url>https://maven.aliyun.com/repository/central</url>
+    </mirror>
+  </mirrors>
+
+  <profiles>
+	<profile>
+        <id>MyProfile</id>
+        <repositories>
+            <repository>
+                <id>HuaweiCloudSDK</id>
+                <url>https://repo.huaweicloud.com/repository/maven/huaweicloudsdk/</url>
+                <releases>
+                    <enabled>true</enabled>
+                </releases>
+                <snapshots>
+                    <enabled>false</enabled>
+                </snapshots>
+            </repository>
+        </repositories>
+    </profile>
+	<profile>
+		<id>spring</id>
+		<repositories>
+			<repository>
+				<id>spring</id>
+				<name>Spring Milestones</name>
+				<url>https://repo.spring.io/milestone</url>
+				<snapshots><enabled>false</enabled></snapshots>
+			</repository>
+			<repository>
+			    <id>spring-snapshots</id>
+			    <name>Spring Snapshots</name>
+			    <url>https://repo.spring.io/snapshot</url>
+			    <snapshots><enabled>true</enabled></snapshots>
+		</repository>
+		</repositories>
+	</profile>
+	<profile>
+        <id>jdk-1.8</id>
+        <activation>
+            <activeByDefault>true</activeByDefault>
+            <jdk>1.8</jdk>
+        </activation>
+        <properties>
+            <maven.compiler.source>1.8</maven.compiler.source>
+            <maven.compiler.target>1.8</maven.compiler.target>
+            <maven.compiler.compilerVersion>1.8</maven.compiler.compilerVersion>
+        </properties>
+    </profile>
+  </profiles>
+  
+  <activeProfiles>
+    <activeProfile>MyProfile</activeProfile>
+	<activeProfile>jdk-1.8</activeProfile>
+	<!--<activeProfile>spring</activeProfile> -->
+  </activeProfiles>
+
+</settings>
